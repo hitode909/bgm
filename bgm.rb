@@ -4,7 +4,7 @@ require "open-uri"
 
 class BGM
   def each(term)
-    tracks = ITunesSearchAPI.search(term: term, country: "JP", media: "music", limit: 8)
+    tracks = ITunesSearchAPI.search(term: term, country: "JP", media: "music", limit: async? ? 10 : 200)
     tracks.each{|track|
       yield lookup track
     }
