@@ -59,13 +59,15 @@ end
 
 bgm = BGM.new
 
-
 if ARGV.include? '--async'
   bgm.async!
 end
+
+puts "provided courtesy of iTunes"
 
 bgm.each(term) {|track|
   bgm.info track
   bgm.play track
 }
+
 sleep 1
