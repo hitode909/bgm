@@ -9,6 +9,12 @@ bundle install
 bundle exec -- ruby bgm.rb dubstep
 ```
 
+## SET PLAYBACK RATE
+
+```
+bundle exec -- ruby bgm.rb dubstep --rate 0.5
+```
+
 ## PLAY ALL TRACKS AT ONCE
 
 ```

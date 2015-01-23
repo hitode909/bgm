@@ -17,11 +17,17 @@ class BGM
   def play(item)
     file = download(item)
 
-    if async?
-      system "afplay #{file.path} &"
-    else
-      system "afplay #{file.path}"
+    command = "afplay #{file.path}"
+
+    if @rate
+      command += " --rate #{ @rate } "
     end
+
+    if async?
+      command += " &"
+    end
+
+    system command
   rescue Interrupt
     nil
   end
@@ -32,6 +38,10 @@ class BGM
 
   def async!
     @async = true
+  end
+
+  def rate(value)
+    @rate = value
   end
 
   protected
@@ -59,8 +69,14 @@ end
 
 bgm = BGM.new
 
-if ARGV.include? '--async'
-  bgm.async!
+while ARGV.length > 0
+  v = ARGV.shift
+  if v ==  '--async'
+    bgm.async!
+  end
+  if v ==  '--rate'
+    bgm.rate(ARGV.shift)
+  end
 end
 
 puts "provided courtesy of iTunes"
