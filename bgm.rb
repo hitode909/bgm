@@ -17,7 +17,7 @@ class BGM
   def play(item)
     file = download(item)
 
-    command = "afplay #{file.path}"
+    command = "#{@player || 'afplay'} #{file.path}"
 
     if @rate
       command += " --rate #{ @rate } "
@@ -42,6 +42,10 @@ class BGM
 
   def rate(value)
     @rate = value
+  end
+
+  def player(value)
+    @player = value
   end
 
   protected
@@ -76,6 +80,9 @@ while ARGV.length > 0
   end
   if v ==  '--rate'
     bgm.rate(ARGV.shift)
+  end
+  if v ==  '--player'
+    bgm.player(ARGV.shift)
   end
 end
 
