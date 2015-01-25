@@ -9,6 +9,12 @@ bundle install
 bundle exec -- ruby bgm.rb dubstep
 ```
 
+## WITH YOUR FAVORITE PLAYER
+
+```
+bundle exec -- ruby bgm.rb dubstep --player 'avplay -nodisp -autoexit'
+```
+
 ## SET PLAYBACK RATE
 
 ```
