@@ -64,6 +64,8 @@ class BGM
   end
 end
 
+trap(:INT) { exit }
+
 term = ARGV.shift
 
 unless term
