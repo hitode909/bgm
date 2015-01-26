@@ -5,6 +5,7 @@ require "open-uri"
 class BGM
   def each(term)
     tracks = ITunesSearchAPI.search(term: term, country: "JP", media: "music", limit: async? ? 10 : 200)
+    tracks.shuffle! if @shuffle
     tracks.each{|track|
       yield lookup track
     }
@@ -38,6 +39,10 @@ class BGM
 
   def async!
     @async = true
+  end
+
+  def shuffle!
+    @shuffle = true
   end
 
   def rate(value)
@@ -79,6 +84,9 @@ while ARGV.length > 0
   v = ARGV.shift
   if v ==  '--async'
     bgm.async!
+  end
+  if v ==  '--shuffle'
+    bgm.shuffle!
   end
   if v ==  '--rate'
     bgm.rate(ARGV.shift)
