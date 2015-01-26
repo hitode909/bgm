@@ -27,6 +27,12 @@ bundle exec -- ruby bgm.rb dubstep --rate 0.5
 bundle exec -- ruby bgm.rb dubstep --async
 ```
 
+## PLAY TRACKS AT RANDOM
+
+```
+bundle exec -- ruby bgm.rb dubstep --shuffle
+```
+
 ## HOW IT WORKS
 
 bgm.rb uses [iTunes Store's Search API](https://www.apple.com/itunes/affiliates/resources/documentation/itunes-store-web-service-search-api.html).
